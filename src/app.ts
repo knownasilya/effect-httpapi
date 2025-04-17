@@ -118,10 +118,7 @@ const todosApiGroup = HttpApiGroup.make('Todos')
     // )
   );
 
-export const Api = HttpApi.make('API')
-  .add(authApiGroup)
-  .add(todosApiGroup)
-  .pipe(Layer.provide(AuthService));
+export const Api = HttpApi.make('API').add(authApiGroup).add(todosApiGroup);
 // const ApiLive = HttpApiBuilder.api(Api);
 
 // export const server = HttpApiBuilder.serve().pipe(
