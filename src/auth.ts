@@ -1,6 +1,7 @@
 import { Effect, Context, Data, Config } from 'effect';
 import { createClient } from '@supabase/supabase-js';
 import * as Schema from 'effect/Schema';
+import { config } from './config';
 
 // Auth types
 export const User = Schema.Struct({
@@ -28,8 +29,9 @@ export class AuthError extends Data.TaggedError('AuthError')<{
 
 export class AuthService extends Effect.Service<AuthService>()('AuthService', {
   effect: Effect.gen(function* () {
-    const url = yield* Config.string('SUPABASE_URL');
-    const key = yield* Config.string('SUPABASE_ANON_KEY');
+    const conf = yield* config;
+    const url = conf.SUPABASE_URL;
+    const key = conf.SUPABASE_ANON_KEY;
     const supabase = createClient(url, key);
 
     return {

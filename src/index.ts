@@ -1,14 +1,10 @@
-import { Config, ConfigProvider, Effect, Layer } from 'effect';
+import { Config, Effect, Layer } from 'effect';
 import { BunHttpServer, BunRuntime } from '@effect/platform-bun';
 import { Api } from './app';
 import { AuthService } from './auth';
 import { HttpApiBuilder, HttpApiSwagger } from '@effect/platform';
 import { AuthLive, TodosLive } from './live';
-
-const config = Config.all({
-  SUPABASE_URL: Config.string(),
-  SUPABASE_ANON_KEY: Config.string(),
-});
+import { config } from './config';
 
 const MyApiLive = HttpApiBuilder.api(Api)
   .pipe(Layer.provide(AuthLive))
