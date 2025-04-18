@@ -1,7 +1,7 @@
 import { Effect, Context, Data, Config } from 'effect';
 import { createClient } from '@supabase/supabase-js';
 import * as Schema from 'effect/Schema';
-import { config } from './config';
+import { config } from '../config';
 
 // Auth types
 export const User = Schema.Struct({

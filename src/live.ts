@@ -3,7 +3,7 @@ import { Api } from './app';
 
 import { Todo } from './types';
 import { Effect, Layer } from 'effect';
-import { AuthService } from './auth';
+import { AuthService } from './services/auth';
 
 const requireAuth = Effect.flatMap(AuthService, (service) =>
   Effect.flatMap(service.getUser(), (user) =>

@@ -2,7 +2,12 @@ import { Effect, Layer } from 'effect';
 import * as Schema from 'effect/Schema';
 
 import { Todo } from './types';
-import { AuthService, SignUpRequest, SignInRequest, User } from './auth';
+import {
+  AuthService,
+  SignUpRequest,
+  SignInRequest,
+  User,
+} from './services/auth';
 import {
   HttpApi,
   HttpApiEndpoint,
