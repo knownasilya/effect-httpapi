@@ -5,6 +5,7 @@
   "scripts": {
     "start": "bun run src/index.ts",
     "dev": "vite",
+    "gen-types": "supabase gen types typescript --project-id avqmrmqujizijacjjovd > src/database.types.ts",
     "test": "vitest",
     "test:coverage": "vitest run --coverage"
   },

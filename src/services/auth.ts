@@ -2,6 +2,7 @@ import { Effect, Context, Data, Config } from 'effect';
 import { createClient } from '@supabase/supabase-js';
 import * as Schema from 'effect/Schema';
 import { config } from '../config';
+import { Database } from '../database.types';
 
 // Auth types
 export const User = Schema.Struct({
@@ -32,7 +33,7 @@ export class AuthService extends Effect.Service<AuthService>()('AuthService', {
     const conf = yield* config;
     const url = conf.SUPABASE_URL;
     const key = conf.SUPABASE_ANON_KEY;
-    const supabase = createClient(url, key);
+    const supabase = createClient<Database>(url, key);
 
     return {
       signUp: (request) =>
